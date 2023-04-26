@@ -23,7 +23,7 @@ DATA_DIRECTORY = "examples/data_oasst1"
 class Config(ConfigProblemBase):
     output_directory: str = "examples/output_oasst1/"
     experiment_name: str = "example_oasst1"
-    llm_backbone: str = "EleutherAI/pythia-1b"
+    llm_backbone: str = "EleutherAI/pythia-410m"
 
     dataset: ConfigNLPCausalLMDataset = ConfigNLPCausalLMDataset(
         train_dataframe=f"{DATA_DIRECTORY}/train_full.csv",
@@ -68,7 +68,7 @@ class Config(ConfigProblemBase):
         num_beams=2,
         temperature=0.3,
         repetition_penalty=1.2,
-        stop_tokens=(),
+        stop_tokens="",
     )
     environment: ConfigNLPCausalLMEnvironment = ConfigNLPCausalLMEnvironment(
         mixed_precision=True, number_of_workers=8, seed=1
